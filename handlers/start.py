@@ -8,7 +8,7 @@ from config import CHANNEL_ID
 
 router = Router()
 
-@router.message(Command("start"))
+@router.message(Command("/start"))
 async def cmd_start(message: Message):
     """
     Команда /start — предлагает пользователю подписаться.
