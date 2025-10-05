@@ -13,6 +13,8 @@ class Settings(BaseModel):
     """
     bot_token: str = Field(..., alias="BOT_TOKEN", min_length=10)
     channel_id: str = Field(..., alias="CHANNEL_ID")
+    webhook_host: str = Field(...,
+alias="WEBHOOK_HOST")
 
     class Config:
         populate_by_name = True
