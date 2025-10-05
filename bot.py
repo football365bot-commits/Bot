@@ -7,6 +7,9 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler
 from config import BOT_TOKEN, WEBHOOK_HOST
 from handlers.start import router as start_router
 
+import os
+PORT = int(os.getenv("PORT", 8080))
+
 WEBHOOK_PATH = f"/webhook{BOT_TOKEN}"
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
