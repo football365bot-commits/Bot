@@ -7,6 +7,6 @@ settings = get_settings()
 BOT_TOKEN = settings.BOT_TOKEN
 CHANNEL_ID = settings.CHANNEL_IF
 WEBHOOK_HOST = settings.WEBHOOK_HOST.rstrip("/")
-WEBHOOK_PATH = settings.WEBHOOK_PACH.rstrip("/")
+WEBHOOK_PATH = settings.WEBHOOK_PACH.lstrip("/")
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
