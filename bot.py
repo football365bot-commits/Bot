@@ -14,7 +14,6 @@ import os
 PORT = int(os.getenv("PORT", 8443))
 
 bot = Bot(BOT_TOKEN)
-    ...
 dp = Dispatcher()
 dp.include_router(start_router)
 
