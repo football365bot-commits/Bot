@@ -13,7 +13,7 @@ WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 import os
 PORT = int(os.getenv("PORT", 8443))
 
-async with Bot(BOT_TOKEN) as bot:
+bot = Bot(BOT_TOKEN)
     ...
 dp = Dispatcher()
 dp.include_router(start_router)
