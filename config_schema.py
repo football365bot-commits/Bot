@@ -27,6 +27,8 @@ def get_settings() -> Settings:
     data = {
         "BOT_TOKEN": os.getenv("BOT_TOKEN"),
         "CHANNEL_ID": os.getenv("CHANNEL_ID"),
+        "WEBHOOK_HOST":
+os.getenv("WEBHOOK_HOST")
     }
     return Settings(**data)
 
