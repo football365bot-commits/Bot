@@ -8,19 +8,6 @@ from config import CHANNEL_ID
 
 router = Router()
 
-
-async def is_subscribed(bot, user_id: int) -> bool:
-    """
-    Проверка подписки пользователя.
-    Бот должен быть администратором канала.
-    """
-    try:
-        member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
-        return member.status in ("member", "creator", "administrator")
-    except TelegramBadRequest:
-        return False
-
-
 @router.message(Command("start"))
 async def cmd_start(message: Message):
     """
@@ -30,7 +17,6 @@ async def cmd_start(message: Message):
         "👋 Привет! Чтобы пользоваться ботом, подпишись на наш канал:",
         reply_markup=subscription_keyboard
     )
-
 
 @router.callback_query(F.data == "check_subscription")
 async def check_subscription(callback: CallbackQuery):
@@ -47,3 +33,20 @@ async def check_subscription(callback: CallbackQuery):
         await callback.answer()
     else:
         await callback.answer("❌ Ты ещё не подписан!", show_alert=True)
+        
+        
+async def is_subscribed(bot, user_id: int) -> bool:
+    """
+    Проверка подписки пользователя.
+    Бот должен быть администратором канала.
+    """
+    try:
+        member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
+        return member.status in ("member", "creator", "administrator")
+    except TelegramBadRequest:
+        return False
+
+
+
+
+
