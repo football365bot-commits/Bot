@@ -11,7 +11,7 @@ WEBHOOK_PATH = f"/webhook/{BOT_TOKEN}"
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 import os
-PORT = int(os.getenv("PORT", 10000))
+PORT = int(os.getenv("PORT", 8080))
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
