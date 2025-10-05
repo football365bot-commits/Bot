@@ -3,6 +3,7 @@ import os
 PORT = int(os.getenv("PORT", 8080))
 
 settings = get_settings()
+settings = Settings()
 
 BOT_TOKEN = settings.BOT_TOKEN
 CHANNEL_ID = settings.CHANNEL_IF
