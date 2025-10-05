@@ -15,7 +15,7 @@ PORT = int(os.getenv("PORT", 8443))
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
-dp.include_router(router)
+dp.include_router(start_router)
 
 async def handle(request):
     request_handler = SimpleRequestHandler(dispatcher=dp, bot=bot)
