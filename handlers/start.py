@@ -1,6 +1,6 @@
 from aiogram import Router, F
 from aiogram.types import Message, CallbackQuery
-from aiogram.filters import Command
+from aiogram.filters import Command, CommandStart
 from aiogram.exceptions import TelegramBadRequest
 
 from keyboards.start_keyboard import subscription_keyboard
@@ -8,7 +8,7 @@ from config import CHANNEL_ID
 
 router = Router()
 
-@router.message(Command("/start"))
+@router.message(CommandStart("/start"))
 async def cmd_start(message: Message):
     """
     Команда /start — предлагает пользователю подписаться.
