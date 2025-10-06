@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, Request
 from aiogram import Bot, Dispatcher, types
-from settig.bot import BOT_TOKEN, WEBHOOK_PATH, WEBHOOK_URL, CHANNEL_ID
+from setting.bot import BOT_TOKEN, WEBHOOK_PATH, WEBHOOK_URL, CHANNEL_ID
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
