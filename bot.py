@@ -26,7 +26,7 @@ async def on_shutdown():
 async def telegram_webhook(request: Request):
     data = await request.json()
     update = types.Update(**data)
-    await dp.feed_update
+    await dp.feed_update(update, bot)
     return {"ok": True}
 
 # ------------------- Простейший старт -------------------
