@@ -1,4 +1,6 @@
 import uvicorn
+from aiogram.filters import Command
+from aiogram.types import Message
 from fastapi import FastAPI, Request
 from aiogram import Bot, Dispatcher, types
 from config.setting import BOT_TOKEN, WEBHOOK_PATH, WEBHOOK_URL, CHANNEL_ID
@@ -28,8 +30,10 @@ async def telegram_webhook(request: Request):
     return {"ok": True}
 
 # ------------------- Простейший старт -------------------
-@dp.message(commands=["start"])
-async def cmd_start(message: types.Message):
+@dp.message(Command("start"))
+async def start_handler(message: Message):
+    await message.answer("Привет! Бот работает.")
+
     keyboard = types.InlineKeyboardMarkup(
         inline_keyboard=[
             [types.InlineKeyboardButton(text="Подписаться на канал", url=CHANNEL_ID)]
