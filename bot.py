@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, Request
 from aiogram import Bot, Dispatcher, types
 from config.bot import BOT_TOKEN, WEBHOOK_PATH, WEBHOOK_URL, CHANNEL_ID
@@ -40,3 +41,7 @@ async def cmd_start(message: types.Message):
 @app.get("/")
 async def root():
     return {"status": "Bot webhook server is running"}
+    
+    if __name__ == "__main__":
+    
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
