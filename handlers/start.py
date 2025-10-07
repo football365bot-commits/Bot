@@ -41,4 +41,4 @@ async def check_subscription(call: CallbackQuery):
         else:
             await call.message.answer("Похоже, вы ещё не подписались 😕")
     except Exception:
-        await call.message.answer(" Не могу проверить подписку!: {e}")
+        await call.message.answer(f"Не могу проверить подписку!: {e}")
