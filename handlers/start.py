@@ -5,6 +5,15 @@ from create_bot import bot, CHANNEL_USERNAME  # Добавляем username ка
 
 router = Router()
 
+
+@router.message(CommandStart())
+async def start_command(message: Message):
+    await message.answer(
+        f"Добро пожаловать, {message.from_user.full_name}! \n"
+        f"Чтобы продолжить, подпишитесь на наш канал: {CHANNEL_USERNAME}",
+        reply_markup=check_subscription_kb
+    )
+
 # ✅ Создаём клавиатуру сразу с нужной кнопкой
 check_subscription_kb = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -17,17 +26,6 @@ check_subscription_kb = InlineKeyboardMarkup(
     ]
 )
 
-
-
-from aiogram.filters import CommandStart
-
-@router.message(CommandStart())
-async def start_command(message: Message):
-    await message.answer(
-        f"Добро пожаловать, {message.from_user.full_name}! \n"
-        f"Чтобы продолжить, подпишитесь на наш канал: {CHANNEL_USERNAME}",
-        reply_markup=check_subscription_kb
-    )
 
 @router.callback_query(lambda c: c.data == "check_sub")
 async def check_subscription(call: CallbackQuery):
