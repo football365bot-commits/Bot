@@ -1,3 +1,4 @@
+from aiogram.filters import CommandStart
 from aiogram import Router
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from create_bot import bot, CHANNEL_USERNAME  # Добавляем username канала
@@ -18,8 +19,10 @@ check_subscription_kb = InlineKeyboardMarkup(
 
 
 
-@router.message(commands=["start"])
-async def start_handler(message: Message):
+from aiogram.filters import CommandStart
+
+@router.message(CommandStart())
+async def start_command(message: Message):
     await message.answer(
         f"Добро пожаловать, {message.from_user.full_name}! \n"
         f"Чтобы продолжить, подпишитесь на наш канал: {CHANNEL_USERNAME}",
