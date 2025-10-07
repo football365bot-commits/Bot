@@ -3,6 +3,10 @@ from aiogram import Router
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from create_bot import bot
 
+from decouple import config
+
+CHANNEL_USERNAME = config("CHANNEL_USERNAME")
+CHANNEL_LINK = config("CHANNEL_LINK")
 
 router = Router()
 
@@ -11,7 +15,7 @@ router = Router()
 async def start_command(message: Message):
     await message.answer(
         f"Добро пожаловать, {message.from_user.full_name}! \n"
-        f"Чтобы продолжить, подпишитесь на наш канал: {CHANNEL_USERNAME}",
+        f"Чтобы продолжить, подпишитесь на наш канал: {CHANNEL_LINK}",
         reply_markup=check_subscription_kb
     )
 
@@ -32,7 +36,7 @@ check_subscription_kb = InlineKeyboardMarkup(
 async def check_subscription(call: CallbackQuery):
     user_id = call.from_user.id
     try:
-        member = await bot.get_chat_member(chat_id="@football_365day", user_id=user_id)
+        member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
         if member.status in ["member", "administrator", "creator"]:
             await call.message.answer("Спасибо за подписку! 🎉")
         else:
