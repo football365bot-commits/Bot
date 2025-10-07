@@ -31,6 +31,9 @@ check_subscription_kb = InlineKeyboardMarkup(
 @router.callback_query(lambda c: c.data == "check_subscription")
 async def check_subscription(call: CallbackQuery):
     user_id = call.from_user.id
+    
+    await call.answer()
+    
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
         if member.status in ["member", "administrator", "creator"]:
