@@ -1,9 +1,7 @@
 from aiogram.filters import CommandStart
 from aiogram import Router
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from create_bot import bot
-
-from decouple import config
+from create_bot import bot, CHANNEL_USERNAME, CHANNEL_LINK
 
 CHANNEL_USERNAME = config("CHANNEL_USERNAME")
 CHANNEL_LINK = config("CHANNEL_LINK")
