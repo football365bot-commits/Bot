@@ -32,7 +32,7 @@ async def check_subscription(call: CallbackQuery):
     user_id = call.from_user.id
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
-        if member.is_chat_member():
+        if member.status in ["member", "administrator", "creator"]:
             await call.message.answer("Спасибо за подписку! 🎉")
         else:
             await call.message.answer("Похоже, вы ещё не подписались 😕")
