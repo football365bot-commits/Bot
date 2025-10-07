@@ -5,8 +5,12 @@ from create_bot import bot, CHANNEL_USERNAME  # Добавляем username ка
 router = Router()
 
 # Кнопка "Проверить подписку"
-check_subscription_kb = InlineKeyboardMarkup().add(
-    InlineKeyboardButton(text="Проверить подписку", callback_data="check_sub")
+check_subscription_kb = InlineKeyboardMarkup()
+check_subscription_kb.add(
+    InlineKeyboardButton(
+        text="Проверить подписку",
+        callback_data="check_subscription"
+    )
 )
 
 @router.message(commands=["start"])
