@@ -20,7 +20,7 @@ check_subscription_kb = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Проверить подписку",
-                callback_data="check_subscription"
+                callback_query="check_subscription"
             )
         ]
     ]
