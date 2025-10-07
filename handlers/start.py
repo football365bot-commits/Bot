@@ -20,14 +20,14 @@ check_subscription_kb = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Проверить подписку",
-                callback_query="check_subscription"
+                callback_data="check_subscription"
             )
         ]
     ]
 )
 
 
-@router.callback_query(lambda c: c.data == "check_sub")
+@router.callback_query(lambda c: c.data == "check_subscription")
 async def check_subscription(call: CallbackQuery):
     user_id = call.from_user.id
     try:
