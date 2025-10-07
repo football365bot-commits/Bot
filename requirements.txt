@@ -1,6 +1,0 @@
-aiogram
-aiohttp
-pydantic
-python-dotenv
-fastapi
-uvicorn
