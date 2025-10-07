@@ -9,7 +9,8 @@ HOST = config("HOST")
 PORT = int(config("PORT"))
 WEBHOOK_PATH = f'/{BOT_TOKEN}'
 BASE_URL = config("BASE_URL")
-CHANNEL_USERNAME = "@football_365day"  # Публичный канал
+CHANNEL_USERNAME = config("CHANNEL_USERNAME")
+CHANNEL_LINK = config("CHANNEL_LINK")
 
 bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
