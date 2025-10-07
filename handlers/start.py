@@ -37,10 +37,13 @@ async def check_subscription(call: CallbackQuery):
     
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
-        if member.status in ["member", "administrator", "creator"]:
-            await call.message.answer("Спасибо за подписку! 🎉")
-        else:
-            await call.message.answer("Похоже, вы ещё не подписались 😕")
-    except Exception as e:
-        print(f"Ошибка проверки подписки: {e}")
-        await call.message.answer(f"Не могу проверить подписку! Ошибка: {e}")
+         member = await bot.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
+
+# ✅ Проверка подписки с логированием статуса
+if member.status in ["member", "administrator", "creator"]:
+    await call.message.answer("Спасибо за подписку! 🎉")
+elif member.status in ["left", "kicked"]:
+    await call.message.answer("Похоже, вы ещё не подписались 😕")
+else:
+    # Для статусов, которые Telegram возвращает, но которые не входят в три основных
+    await call.message.answer(f"Статус пользователя: {member.status}")
