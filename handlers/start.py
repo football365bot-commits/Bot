@@ -40,5 +40,7 @@ async def check_subscription(call: CallbackQuery):
             await call.message.answer("Спасибо за подписку! 🎉")
         else:
             await call.message.answer("Похоже, вы ещё не подписались 😕")
-    except Exception:
-        await call.message.answer(f"Не могу проверить подписку!: {e}")
+
+except Exception as e:
+    print(f"Ошибка проверки подписки: {e}")
+    await call.message.answer(f"Не могу проверить подписку! Ошибка: {e}")
