@@ -15,6 +15,7 @@ async def start_command(message: Message):
         reply_markup=check_subscription_kb
     )
 
+
 # ✅ Создаём клавиатуру сразу с нужной кнопкой
 check_subscription_kb = InlineKeyboardMarkup(
     inline_keyboard=[
@@ -42,5 +43,5 @@ async def check_subscription(call: CallbackQuery):
             await call.message.answer("Похоже, вы ещё не подписались 😕")
 
     except Exception as e:
-print(f"Ошибка проверки подписки: {e}")
+        print(f"Ошибка проверки подписки: {e}")
         await call.message.answer(f"Не могу проверить подписку! Ошибка: {e}")
