@@ -12,6 +12,6 @@ class IsSubscribed(BaseFilter):
             await bot.send_message(
                 chat_id=user_id,
                 text="Подпишитесь,чтобы получить доступ!"
-                repla
+                reply_markup=start_kb
             )
             
