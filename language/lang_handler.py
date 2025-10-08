@@ -1,6 +1,6 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, Message
-from language.keyboard import language_keyboard
+from language.lang_keyboard import language_keyboard
 
 router = Router()
 
