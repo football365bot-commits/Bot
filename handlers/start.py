@@ -1,5 +1,6 @@
 from aiogram import Router
-from aiogram.filters import CommandStart, Text
+from aiogram.filters import CommandStart
+from aiogram.filters.text import Text
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from create_bot import bot, CHANNEL_USERNAME, CHANNEL_ID
 from filters.is_subscribed import IsSubscribed
