@@ -12,7 +12,7 @@ class IsSubscribedQuery(BaseFilter):
             sub = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
 
             if sub.status != "left":
-                await call.message.answer(
+                await call.message.answer("
                     Спасибо за подписку!✅ 
                     Выберите язык:",
                     reply_markup=
