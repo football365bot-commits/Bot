@@ -8,16 +8,14 @@ class IsSubscribedQuery(BaseFilter):
     async def __call__(self, call: CallbackQuery) -> bool:
         user_id = call.from_user.id
         try:
-            # ✅ Проверяем, подписан ли пользователь
+            # Проверяем, подписан ли пользователь
             sub = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
 
             if sub.status != "left":
-                await call.message.answer("
-                    Спасибо за подписку!✅ 
-                    Выберите язык:",
-                    reply_markup=
-                    language_keyboard
-                
+                await call.message.answer(
+                    "Спасибо за подписку!✅\nВыберите язык:",
+                    reply_markup=language_keyboard
+                )
                 return True
             else:
                 await bot.send_message(
