@@ -2,8 +2,8 @@ import logging
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from aiohttp import web
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
-from start.sub_done import router
-from start.sub_handlers_start import router
+from start.sub_done import router as sub_done_router
+from start.sub_handlers_start import router as start_router
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
 
 
@@ -23,7 +23,9 @@ async def on_shutdown() -> None:
     await bot.session.close()
 
 def main() -> None:
-    dp.include_router(router)
+    dp.include_router(start_router)
+    dp.include_router(sub_done_router)
+    
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
 
