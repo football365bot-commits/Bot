@@ -5,6 +5,9 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 from start.sub_done import router as sub_done_router
 from start.sub_handlers_start import router as start_router
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
+from language.lang_handler import router as laun_keyboard_router
+
+
 
 
 
@@ -25,6 +28,7 @@ async def on_shutdown() -> None:
 def main() -> None:
     dp.include_router(start_router)
     dp.include_router(sub_done_router)
+    dp.includ_router(laung_keyboard)
     
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
