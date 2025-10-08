@@ -5,7 +5,7 @@ from start.sub_link import sub_link_buttons
 
 
 class IsSubscribedQuery(BaseFilter):
-    async def __call__(self, call: CallbackQuery) -> bool:
+    async def __call__(call: CallbackQuery) -> bool:
         user_id = call.from_user.id
         try:
             # ✅ Проверяем, подписан ли пользователь
