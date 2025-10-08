@@ -1,5 +1,6 @@
 from aiogram.filters import BaseFilter
 from aiogram.types import Message, CallbackQuery
+from handlers.start import start_kb
 from create_bot import bot, CHANNEL_ID
 
 class IsSubscribedMessage(BaseFilter):
