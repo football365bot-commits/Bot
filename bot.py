@@ -5,7 +5,6 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
 from handlers.start import router
 
-dp.include_router(router)
 
 async def set_commands():
     commands = [BotCommand(command='start', description='Старт')]
