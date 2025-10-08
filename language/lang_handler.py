@@ -1,6 +1,6 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, Message
-from .Keyboard import language_keyboard
+from language.keyboard import language_keyboard
 
 router = Router()
 
@@ -22,13 +22,6 @@ translations = {
     "ko": {"welcome": "환영합니다! 👋", "language_selected": "한국어를 선택했습니다 🇰🇷"}
 }
 
-# Отправка клавиатуры выбора языка
-@router.message(F.text == "/start")
-async def start_command(message: Message):
-    await message.answer(
-        "Пожалуйста, выберите язык / Please select your language:",
-        reply_markup=language_keyboard
-    )
 
 # Обработка выбора языка
 @router.callback_query(F.data.startswith("lang_"))
