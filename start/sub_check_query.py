@@ -2,7 +2,7 @@ from aiogram.filters import BaseFilter
 from aiogram.types import CallbackQuery
 from create_bot import bot, CHANNEL_ID
 from start.sub_link import sub_link_buttons
-
+from language.lang_keyboard import language_keyboard
 
 class IsSubscribedQuery(BaseFilter):
     async def __call__(self, call: CallbackQuery) -> bool:
