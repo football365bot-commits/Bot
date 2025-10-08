@@ -6,14 +6,7 @@ from filters.is_subscribed import IsSubscribed
 
 router = Router()
 
-# ✅ Кнопки
-start_kb = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="Подписаться", url=CHANNEL_LINK)],
-        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")]
-    ]
-)
-
+#
 # ✅ /start
 @router.message(CommandStart())
 async def start_command(message: Message):
@@ -22,6 +15,13 @@ async def start_command(message: Message):
         f"Чтобы продолжить, подпишитесь на канал.",
         reply_markup=start_kb
     )
+
+start_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Подписаться", url=CHANNEL_LINK)],
+        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")]
+    ]
+)
 
 @router.callback_query(lambda c: c.data == "check_subscription")
 async def check_subscription(call: CallbackQuery):
