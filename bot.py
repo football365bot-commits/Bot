@@ -2,6 +2,7 @@ import logging
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from aiohttp import web
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+from start.sub_handlers_start import router
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
 
 
