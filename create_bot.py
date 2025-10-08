@@ -11,6 +11,6 @@ WEBHOOK_PATH = f'/{BOT_TOKEN}'
 BASE_URL = config("BASE_URL")
 CHANNEL_USERNAME = config("CHANNEL_USERNAME")
 CHANNEL_LINK = config("CHANNEL_LINK")
-CHANNEL_ID = config("CHANNRL_ID")
+CHANNEL_ID = config("CHANNEL_ID")
 bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
