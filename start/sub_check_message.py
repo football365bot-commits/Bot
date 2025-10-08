@@ -11,6 +11,5 @@ class IsSubskcribedMessage(BaseFilter):
         else:
             await bot.send_message(
                 chat_id=user_id,
-                text="Подпишитесь чтобы продолжить!",
-                reply_markup=sub_link_buttons
+                text="Подпишитесь чтобы продолжить!", reply_markup=sub_link_buttons
             )
