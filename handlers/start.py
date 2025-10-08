@@ -1,13 +1,20 @@
 from aiogram.filters import CommandStart
 from aiogram import Router
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from create_bot import bot, CHANNEL_USERNAME, CHANNEL_LINK
+from create_bot import bot, CHANNEL_USERNAME, CHANNEL_LINK, CHANNEL_ID
 from filters.is_subscribed import IsSubscribed
 
 router = Router()
 
-#
-# ✅ /start
+# ✅ Кнопки /start
+start_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Подписаться", url=CHANNEL_LINK)],
+        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")]
+    ]
+)
+
+# ✅ Команда /start
 @router.message(CommandStart())
 async def start_command(message: Message):
     await message.answer(
@@ -16,25 +23,19 @@ async def start_command(message: Message):
         reply_markup=start_kb
     )
 
-start_kb = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="Подписаться", url=CHANNEL_LINK)],
-        [InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")]
-    ]
-)
+# ✅ Callback: подписан
+@router.callback_query(IsSubscribed(), lambda c: c.data == "check_subscription")
+async def subscribed_callback(call: CallbackQuery):
+    # Обновляем текст того же сообщения
+    await call.message.edit_text("✅ Спасибо за подписку! 🎉 Добро пожаловать!")
+    await call.answer()  # скрываем "загрузка..."
 
+# ❌ Callback: не подписан
 @router.callback_query(lambda c: c.data == "check_subscription")
-async def check_subscription(call: CallbackQuery):
-    try:
-        member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
-        if member.status in ["member", "administrator", "creator"]:
-            await call.answer()
-            await call.message.answer("Спасибо за подписку! 🎉 Добро пожаловать!")
-        else:
-            await call.answer()
-            await call.message.answer(
-                f"Похоже, вы ещё не подписались 😕\n"
-                f"Подпишитесь здесь: {CHANNEL_LINK} и попробуйте снова!"
-            )
-    except Exception as e:
-        await call.message.answer(f"⚠️ Ошибка проверки подписки: {e}")
+async def not_subscribed_callback(call: CallbackQuery):
+    # Обновляем сообщение, оставляем кнопки
+    await call.message.edit_text(
+        f"😕 Похоже, вы ещё не подписались.\nПодпишитесь здесь 👉 {CHANNEL_LINK}",
+        reply_markup=call.message.reply_markup
+    )
+    await call.answer()  # скрываем "загрузка..."
