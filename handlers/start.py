@@ -19,7 +19,7 @@ check_subscription_kb = InlineKeyboardMarkup(
 async def start_command(message: Message):
     await message.answer(
         f"Добро пожаловать, {message.from_user.full_name}! 👋\n"
-        f"Чтобы продолжить, подпишитесь на канал: {CHANNEL_LINK}",
+        f"Чтобы продолжить, подпишитесь на канал: {CHANNEL_USERNAME}",
         reply_markup=check_subscription_kb
     )
 
