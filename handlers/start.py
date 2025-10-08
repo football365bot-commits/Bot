@@ -23,7 +23,7 @@ async def start_command(message: Message):
     )
 
 # ✅ Callback для проверки подписки
-@router.callback_query(lambda c: c.data == "check_subscription")
+@router.callback_query(IsSubscribed(), lambda c: c.data == "check_subscription")
 async def check_subscription_callback(call: CallbackQuery):
     await call.answer()  # скрываем "Загрузка..."
     try:
