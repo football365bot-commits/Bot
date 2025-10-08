@@ -1,7 +1,7 @@
 from aiogram.filters import BaseFilter
 from aiogram.types import Message 
 from create_bot import bot, CHANNEL_ID
-
+from start.sub_link import sub_link_buttons
 class IsSubskcribedMessage(BaseFilter):
     async def __call__(self, message: Message):
         user_id = message.from_user.id
@@ -12,5 +12,5 @@ class IsSubskcribedMessage(BaseFilter):
             await bot.send_message(
                 chat_id=user_id,
                 text="Подпишитесь чтобы продолжить!",
-                reply_markup=
+                reply_markup=sub_link_buttons
             )
