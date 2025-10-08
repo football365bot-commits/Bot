@@ -28,7 +28,7 @@ async def on_shutdown() -> None:
 def main() -> None:
     dp.include_router(start_router)
     dp.include_router(sub_done_router)
-    dp.includ_router(laung_keyboard)
+    dp.include_router(laun_keyboard_router)
     
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
