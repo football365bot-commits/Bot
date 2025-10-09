@@ -1,12 +1,12 @@
 from aiogram import Router, types
-from aiogram.filters import Text
+from aiogram.filters import F
 from create_bot import bot, CHANNEL_ID
 from start.sub_link import sub_link_buttons
 from language.lang_keyboard import language_keyboard
 
 router = Router()
 
-@router.callback_query(Text("sub_done"))
+@router.callback_query(F.data == "sub_done"))
 async def sub_done(call: types.CallbackQuery):
     """
     Обработчик нажатия кнопки "Проверить подписку"
