@@ -29,10 +29,8 @@ async def start_command(message: types.Message):
         keyboard = sub_link_buttons
 
     await message.answer(
-    "Добро пожаловать👋\nПроверьте подписку, чтобы продолжить 👇:",
-    reply_markup=sub_link_buttons  # ← здесь указываем нужную inline-клавиатуру
+    text,       # текст берём из переменной text
+    reply_markup=keyboard  # клавиатура берётся из переменной keyboard
 )
-
-
 
 
