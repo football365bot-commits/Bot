@@ -17,7 +17,7 @@ async def sub_done(call: types.CallbackQuery):
             reply_markup=language_keyboard
         )
     else:
-        await call.message.answer(
+        await call.message.edit_text(
             "❌ Подпишитесь на канал, чтобы продолжить!",
             reply_markup=sub_link_buttons
         )
