@@ -4,12 +4,8 @@ from aiohttp import web
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from start.sub_done import router as sub_done_router
 from start.sub_handlers_start import router as start_router
+from language.lang_handler import router as language_router
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
-from language.lang_handler import router as laun_keyboard_router
-
-
-
-
 
 async def set_commands():
     commands = [BotCommand(command='start', description='Старт')]
@@ -18,31 +14,28 @@ async def set_commands():
 async def on_startup() -> None:
     await set_commands()
     await bot.set_webhook(f"{BASE_URL}{WEBHOOK_PATH}")
-    await bot.send_message(chat_id=ADMIN_ID, text='Бот запущен!')
+    await bot.send_message(chat_id=ADMIN_ID, text='✅ Бот запущен!')
 
 async def on_shutdown() -> None:
-    await bot.send_message(chat_id=ADMIN_ID, text='Бот остановлен!')
+    await bot.send_message(chat_id=ADMIN_ID, text='🛑 Бот остановлен!')
     await bot.delete_webhook(drop_pending_updates=True)
     await bot.session.close()
 
 def main() -> None:
     dp.include_router(start_router)
     dp.include_router(sub_done_router)
-    dp.include_router(laun_keyboard_router)
-    
-    
-    
-    
+    dp.include_router(language_router)
+
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
 
     app = web.Application()
-    webhook_requests_handler = SimpleRequestHandler(dispatcher=dp, bot=bot)
-    webhook_requests_handler.register(app, path=WEBHOOK_PATH)
+    webhook_handler = SimpleRequestHandler(dispatcher=dp, bot=bot)
+    webhook_handler.register(app, path=WEBHOOK_PATH)
     setup_application(app, dp, bot=bot)
     web.run_app(app, host=HOST, port=PORT)
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+                        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     main()
