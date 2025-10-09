@@ -3,7 +3,7 @@ from start.sub_link import sub_link_buttons
 from aiogram.types import Message 
 router = Router()
 
-@router.message()
+@router.message(IsSubscribedMessage())
 async def handle_unsubscribed(message: types.Message):
     await message.answer(
         "❌ Подпишитесь на канал, чтобы продолжить!",
