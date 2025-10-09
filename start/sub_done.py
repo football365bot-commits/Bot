@@ -1,7 +1,8 @@
 from aiogram import Router, types, F
 from language.lang_keyboard import language_keyboard
-from start.sub_link import sub_link_buttons  # кнопки для подписки
+from start.sub_link import sub_link_buttons
 from create_bot import bot, CHANNEL_ID
+from start.sub_check_query import IsSubscribedQuery
 
 router = Router()
 
