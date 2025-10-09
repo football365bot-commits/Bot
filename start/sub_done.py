@@ -14,7 +14,7 @@ async def sub_done(call: types.CallbackQuery):
     if member.status != "left":
         await call.message.edit_text(
             "Спасибо за подписку!✅\nВыберите язык:",
-            reply_markup=language_keyboard
+            reply_markup=await kb.language_keyboard()
         )
     else:
         await call.message.edit_text(
