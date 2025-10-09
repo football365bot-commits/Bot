@@ -11,10 +11,8 @@ router = Router()
 
 @router.callback_query(F.data == "sub_done", IsSubscribedQuery())
 async def sub_done(call: types.CallbackQuery):
-    try:
-        member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
-        if member.status != "left":
-            await call.message.edit_text(
+    
+    await call.message.edit_text(
                 "Спасибо за подписку!✅\nВыберите язык:",
                 reply_markup=language_keyboard
             )
