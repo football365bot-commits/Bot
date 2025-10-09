@@ -1,6 +1,7 @@
 from aiogram import Router, types
 from start.sub_link import sub_link_buttons
 from language.lang_keyboard import language_keyboard
+from create_bot import bot, CHANNEL_ID
 from start.sub_check_message import IsSubscribedMessage
 
 router = Router()
