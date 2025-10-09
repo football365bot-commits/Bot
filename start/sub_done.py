@@ -7,6 +7,7 @@ router = Router()
 
 @router.callback_query(F.data == "sub_done")
 async def sub_done(call: types.CallbackQuery):
+    await call.answer()
     member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
 
     if member.status != "left":
