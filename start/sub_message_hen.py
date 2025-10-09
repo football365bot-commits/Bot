@@ -1,6 +1,6 @@
 from aiogram import Router, types
 from start.sub_link import sub_link_buttons
-
+from aiogram.types import Message 
 router = Router()
 
 @router.message()
