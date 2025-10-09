@@ -1,6 +1,7 @@
 from aiogram.filters import BaseFilter
 from aiogram.types import Message
 from create_bot import bot, CHANNEL_ID
+from start.sub_check_message import IsSubscribedMessage
 
 class IsSubscribedMessage(BaseFilter):
     async def __call__(self, message: Message) -> bool:
