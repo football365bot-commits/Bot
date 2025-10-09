@@ -6,7 +6,7 @@ from start.sub_done import router as sub_done_router
 from start.sub_handlers_start import router as start_router
 from create_bot import bot, dp, BASE_URL, WEBHOOK_PATH, HOST, PORT, ADMIN_ID
 from language.lang_handler import router as laun_keyboard_router
-
+from start.sub_message_hen import router as sun_message_hen_router
 
 
 
@@ -29,6 +29,9 @@ def main() -> None:
     dp.include_router(start_router)
     dp.include_router(sub_done_router)
     dp.include_router(laun_keyboard_router)
+    dp.include_router(sun_message_hen_router)
+    
+    
     
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
