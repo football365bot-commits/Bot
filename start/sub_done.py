@@ -7,17 +7,25 @@ router = Router()
 
 @router.callback_query(F.data == "sub_done")
 async def sub_done(call: types.CallbackQuery):
-    print("работать💪:", call.data)
-    await call.answer()
-    member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
+    """
+    Callback для кнопки "Проверить подписку"
+    """
+    await call.answer()  # убираем кружок Telegram
 
-    if member.status != "left":
+    try:
+        member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
+        is_subscribed = member.status != "left"
+    except Exception:
+        is_subscribed = False
+
+    if is_subscribed:
         await call.message.edit_text(
-            "Спасибо за подписку!✅\nВыберите язык:",
-            reply_markup=await kb.language_keyboard()
+            "Спасибо за подписку! ✅\nВыберите язык:",
+            reply_markup=language_keyboard
         )
     else:
         await call.message.edit_text(
             "❌ Подпишитесь на канал, чтобы продолжить!",
             reply_markup=sub_link_buttons
         )
+
