@@ -5,7 +5,7 @@ from create_bot import bot, CHANNEL_ID
 
 router = Router()
 
-@router.callback_query(F.data == "sub_done")
+@router.callback_query(Text("sub_done"))
 async def sub_done(call: types.CallbackQuery):
     """
     Callback для кнопки "Проверить подписку"
