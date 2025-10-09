@@ -3,10 +3,13 @@ from aiogram import types, Router, F
 from language.lang_keyboard import language_keyboard
 from create_bot import bot
 from create_bot import CHANNEL_ID
+from start.sub_check_query import IsSubscribedQuery
+
+
 
 router = Router()
 
-@router.callback_query(F.data == "sub_done")
+@router.callback_query(F.data == "sub_done", IsSubscribedQuery())
 async def sub_done(call: types.CallbackQuery):
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
