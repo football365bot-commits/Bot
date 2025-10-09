@@ -14,7 +14,7 @@ async def handle_subscribed(message: types.Message):
         reply_markup=language_keyboard
     )
 
-@router.message()  # Любое сообщение, если пользователь не подписан
+@router.message(~IsSubscribedMessage())  # Обратный фильтр для неподписанных
 async def handle_unsubscribed(message: types.Message):
     await message.answer(
         "❌ Подпишитесь на канал, чтобы продолжить!",
