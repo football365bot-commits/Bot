@@ -1,9 +1,8 @@
 from aiogram.filters import CommandStart
 from aiogram import Router, types 
-from create_bot import bot
+from create_bot import bot, CHANNEL_ID
 from start.sub_link import sub_link_buttons
 from language.lang_keyboard import language_keyboard
-
 
 
 
