@@ -1,3 +1,4 @@
+from aiogram.types import CallbackQuery
 from aiogram import types, Router, F
 from language.lang_keyboard import language_keyboard
 from create_bot import bot
