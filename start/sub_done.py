@@ -6,7 +6,7 @@ from start.sub_check_query import IsSubscribedQuery
 
 router = Router()
 
-@router.callback_query(F.data == "sub_done")
+@router.callback_query(F.data == "sub_done", IsSubscribedQuery())
 async def sub_done(call: types.CallbackQuery):
     member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=call.from_user.id)
     
