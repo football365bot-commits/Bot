@@ -10,4 +10,4 @@ class IsSubscribedMessage(BaseFilter):
             return sub.status != "left"
         except Exception as e:
             print(f"Ошибка при проверке подписки: {e}")
-            return True
+            return False
