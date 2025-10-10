@@ -29,6 +29,6 @@ async def sub_done(call: types.CallbackQuery):
 
     # Пытаемся отредактировать сообщение, если нельзя — просто отправляем новое
     try:
-        await call.message.edit_text(text, reply_markup=markup)
+        await call.message.edit_text(text, reply_markup=reply_markup)
     except:
-        await call.message.answer(text, reply_markup=markup)
+        await call.message.answer(text, reply_markup=reply_markup)
