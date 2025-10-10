@@ -22,10 +22,10 @@ async def sub_done(call: types.CallbackQuery):
 
     if is_subscribed:
         text = "Спасибо за подписку! ✅\nВыберите язык:"
-        markup = language_keyboard
+        reply_markup = language_keyboard
     else:
         text = "❌ Подпишитесь на канал, чтобы продолжить!"
-        markup = sub_link_buttons
+        reply_markup = sub_link_buttons
 
     # Пытаемся отредактировать сообщение, если нельзя — просто отправляем новое
     try:
