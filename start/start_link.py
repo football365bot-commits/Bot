@@ -8,7 +8,7 @@ sub_link_buttons = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Подписаться✅", url=CHANNEL_LINK)  # кнопка с ссылкой на канал
         ],
         [
-            InlineKeyboardButton(text="Проверить подписку🔄", callback_data="")  # кнопка для проверки подписки
+            InlineKeyboardButton(text="Проверить подписку🔄", callback_data="sub_link")  # кнопка для проверки подписки
         ]
     ]
 )
