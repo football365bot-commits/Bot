@@ -21,7 +21,7 @@ async def on_shutdown() -> None:
     await bot.session.close()
 
 def main() -> None:
-    
+    dp.include_router(start_router)
 
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
